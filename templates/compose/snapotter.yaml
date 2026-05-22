@@ -1,0 +1,21 @@
+# documentation: https://docs.snapotter.com/guide/getting-started.html#docker-compose
+# slogan: A Self Hosted Image Manipulator
+# category: utilities
+# tags: image,ocr,ai,pdf
+# logo: svgs/snapotter.svg
+# port: 1349
+services:
+  snapotter:
+    image: 'snapotter/snapotter:latest'
+    volumes:
+      - 'snapotter_data:/data'
+    environment:
+      - SERVICE_URL_SNAPOTTER_1349
+      - AUTH_ENABLED=true
+      - 'DEFAULT_USERNAME=${SERVICE_USER_SNAPOTTER}'
+      - 'DEFAULT_PASSWORD=${SERVICE_PASSWORD_SNAPOTTER}'
+      - 'EXTERNAL_URL=${SERVICE_URL_SNAPOTTER}'
+      - 'OIDC_ENABLED=${OIDC_ENABLED:-false}'
+      - 'OIDC_ISSUER_URL=${OIDC_ISSUER_URL}'
+      - 'OIDC_CLIENT_ID=${OIDC_CLIENT_ID}'
+      - 'OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}'
